@@ -5,17 +5,59 @@ import InputAdornment from "@mui/material/InputAdornment";
 import { IoPersonCircleSharp } from "react-icons/io5";
 import { IoLockClosed } from "react-icons/io5";
 import { Button } from "@mui/material";
+import { useFormik } from "formik";
+import { registerPageSchema } from "../schemas/RegisterPageSchema";
+import { UserType } from "../types/Types";
+import registerPageService from "../services/RegisterPageService";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 function RegisterPage() {
+
+  const navigate = useNavigate();
+
+  const submit = async (values: any, actions: any) => {
+    try {
+      const payload: UserType = {
+        username: values.username,
+        password: values.password,
+      };
+      const response = await registerPageService.register(payload);
+      if (response) {
+        clear();
+        toast.success('Successfully added');
+        navigate("/login");
+      }
+    } catch (error) {
+      toast.error('An error occurred')
+    }
+  };
+
+  const { values, handleSubmit, handleChange, errors, resetForm } = useFormik({
+    initialValues: {
+      username: "",
+      password: "",
+    },
+
+    onSubmit: submit,
+    validationSchema: registerPageSchema,
+  });
+
+  const clear = () => {
+    resetForm();
+  };
+
   return (
     <div className="register">
       <div className="main">
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="form-div">
             <TextField
               sx={{ width: "300px", margin: "25px" }}
               id="username"
               placeholder="Username"
+              value={values.username}
+              onChange={handleChange}
               slotProps={{
                 input: {
                   startAdornment: (
@@ -26,13 +68,20 @@ function RegisterPage() {
                 },
               }}
               variant="standard"
+              helperText={
+                errors.username && (
+                  <span style={{ color: "red" }}>{errors.username}</span>
+                )
+              }
             />
 
             <TextField
               sx={{ width: "300px", margin: "25px" }}
-              id="username"
+              id="password"
               type="password"
               placeholder="Password"
+              value={values.password}
+              onChange={handleChange}
               slotProps={{
                 input: {
                   startAdornment: (
@@ -43,12 +92,40 @@ function RegisterPage() {
                 },
               }}
               variant="standard"
+              helperText={
+                errors.password && (
+                  <span style={{ color: "red" }}>{errors.password}</span>
+                )
+              }
             />
 
             <div>
-              <Button size="small" sx={{ textTransform:'none', height: '28px', marginRight: '10px'}} variant="contained" color="info" >Sign Up</Button>
-              <Button size="small" sx={{ textTransform:'none', height: '28px', marginRight: '10px', backgroundColor:'#CDA735'}} variant="contained" >Clear</Button>
-            
+              <Button
+                type="submit"
+                size="small"
+                sx={{
+                  textTransform: "none",
+                  height: "28px",
+                  marginRight: "10px",
+                }}
+                variant="contained"
+                color="info"
+              >
+                Sign Up
+              </Button>
+              <Button
+                onClick={clear}
+                size="small"
+                sx={{
+                  textTransform: "none",
+                  height: "28px",
+                  marginRight: "10px",
+                  backgroundColor: "#CDA735",
+                }}
+                variant="contained"
+              >
+                Clear
+              </Button>
             </div>
           </div>
         </form>

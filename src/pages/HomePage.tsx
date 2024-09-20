@@ -6,6 +6,9 @@ import productService from "../services/ProductService";
 import { toast } from "react-toastify";
 import { RootState } from "../redux/store";
 import ProductCard from "../components/ProductCard";
+import Category from "../components/Category";
+import Container from '@mui/material/Container';
+
 
 function HomePage() {
   const dispatch = useDispatch();
@@ -37,13 +40,23 @@ function HomePage() {
     }
   }, []);
 
-  return <div style={{display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'center',flexWrap:'wrap'}}>
-    {
-      products && products.map((product: ProductType, index: number) => (
-        <ProductCard key={index} product={product} />
-      ))
-             }
-  </div>;
+  return (
+    <div style={{ display: "flex", flexDirection: "row", alignItems: "flex-start", justifyContent: "center" }}>
+      
+      <Category />
+
+      <Container maxWidth="xl">
+      <div
+        style={{ display: "flex",flexDirection: "row", alignItems: "center", justifyContent: "center", flexWrap: "wrap", }}>
+        {products &&
+          products.map((product: ProductType, index: number) => (
+            <ProductCard key={index} product={product} />
+          ))}
+        </div>
+      </Container>
+      
+    </div>
+  );
 }
 
 export default HomePage;

@@ -4,8 +4,10 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import categoryService from "../services/CategoryService";
 import { useDispatch } from "react-redux";
-import { setLoading } from "../redux/appSlice";
+import { setLoading, setProducts } from "../redux/appSlice";
 import { toast } from "react-toastify";
+import productService from "../services/ProductService";
+import { ProductType } from "../types/Types";
 
 function Category() {
 
@@ -26,12 +28,25 @@ function Category() {
         }
     }
 
-    const handleCategory = (e:React.ChangeEvent<HTMLInputElement>, categoryName:string) => {
+    const handleCategory = async(e:React.ChangeEvent<HTMLInputElement>, categoryName:string) => {
+        try {
+            dispatch(setLoading(true));
         if (e.target.checked) {
             //kategoriye gore urun getir
+            const products: ProductType[] = await categoryService.getProductsByCategoryName(categoryName);
+            dispatch(setProducts(products));
         } else {
             //ekranda butun urunleri goster
+            const products: ProductType[] = await productService.getAllProduct();
+            dispatch(setProducts(products));
         }
+       } catch (error) {
+        toast.error("An error occured : " + error);
+        
+        }
+        finally {
+        dispatch(setLoading(false));
+    }
         
     }
 

@@ -10,21 +10,38 @@ import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import { useDispatch } from "react-redux";
-import { setCurrentUser } from "../redux/appSlice";
+import { filterProducts, setCurrentUser, setProducts } from "../redux/appSlice";
 import { toast } from "react-toastify";
+import productService from "../services/ProductService";
+import { ProductType } from "../types/Types";
+import { FaBasketShopping } from "react-icons/fa6";
+import Badge from "@mui/material/Badge";
 
 export default function Navbar() {
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-    const logout = () => {
-        localStorage.removeItem('currentUser');
-        dispatch(setCurrentUser(null));
-        navigate("/login");
-        toast.success('Successfully logout')
+  const logout = () => {
+    localStorage.removeItem("currentUser");
+    dispatch(setCurrentUser(null));
+    navigate("/login");
+    toast.success("Successfully logout");
+  };
 
+  const handleFilter = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    try {
+      if (e.target.value) {
+        //filtrele
+        dispatch(filterProducts(e.target.value));
+      } else {
+        //butun urunleri goster
+        const products: ProductType[] = await productService.getAllProduct();
+        dispatch(setProducts(products));
+      }
+    } catch (error) {
+      toast.error("An error occured : " + error);
     }
-    
+  };
 
   return (
     <AppBar position="static" sx={{ backgroundColor: "#2BBD7E" }}>
@@ -48,9 +65,19 @@ export default function Navbar() {
           MD-Shopping
         </Typography>
 
-        <div style={{display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'center'}}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
           <TextField
-            sx={{ width: "250px", margin: "25px", marginRight:'30px'}}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              handleFilter(e)
+            }
+            sx={{ width: "250px", margin: "25px", marginRight: "30px" }}
             id="searchInput"
             placeholder="searching products"
             slotProps={{
@@ -66,7 +93,16 @@ export default function Navbar() {
             }}
             variant="standard"
           />
-          <Button onClick={logout} sx={{ textTransform: "none" , marginRight:'10px'}} color="inherit">
+
+          <Badge badgeContent={4} color="warning" sx={{margin:'0px 15px'}}>
+          <FaBasketShopping style={{ fontSize: "18px",  cursor: "pointer" }} />
+          </Badge>
+
+           <Button
+            onClick={logout}
+            sx={{ textTransform: "none", marginRight: "10px" }}
+            color="inherit"
+          >
             Logout
           </Button>
         </div>

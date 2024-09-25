@@ -30,7 +30,7 @@ function ProductCard(props: ProductCardProps) {
       </Typography>
           </CardContent>
           <div>
-              <h2 style={{fontFamily:'arial'}}>{price} €</h2>
+              <h2 style={{fontFamily:'arial',marginTop:"70px"}}>{price} €</h2>
           </div>
     <CardActions>
         <Button onClick={()=> navigate("/product-detail/" + id) } size="small" variant='outlined' color='info'>Detail</Button>

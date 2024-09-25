@@ -9,17 +9,20 @@ import MDLogo from "../images/LOGO1.png";
 import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { filterProducts, setCurrentUser, setProducts } from "../redux/appSlice";
 import { toast } from "react-toastify";
 import productService from "../services/ProductService";
 import { ProductType } from "../types/Types";
 import { FaBasketShopping } from "react-icons/fa6";
 import Badge from "@mui/material/Badge";
+import { RootState } from "../redux/store";
 
 export default function Navbar() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const { basket } = useSelector((state: RootState) => state.basket);
 
   const logout = () => {
     localStorage.removeItem("currentUser");
@@ -94,7 +97,7 @@ export default function Navbar() {
             variant="standard"
           />
 
-          <Badge badgeContent={4} color="warning" sx={{margin:'0px 15px'}}>
+          <Badge badgeContent={basket.length} color="warning" sx={{margin:'0px 15px'}}>
           <FaBasketShopping style={{ fontSize: "18px",  cursor: "pointer" }} />
           </Badge>
 
@@ -109,4 +112,4 @@ export default function Navbar() {
       </Toolbar>
     </AppBar>
   );
-}//yorum
+}

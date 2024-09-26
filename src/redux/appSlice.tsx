@@ -53,6 +53,6 @@ const appSlice = createSlice({
     }//reducers
 })
 
-export const {setLoading,setDrawer ,setCurrentUser,setProducts, filterProducts} = appSlice.actions
+export const {setLoading,setDrawer ,setCurrentUser,setProducts, filterProducts, updateBalance} = appSlice.actions
 
 export default appSlice.reducer

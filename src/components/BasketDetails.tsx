@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Drawer from "@mui/material/Drawer";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/store";
-import { setDrawer } from "../redux/appSlice";
+import { setDrawer, updateBalance } from "../redux/appSlice";
 import { ProductType, UserType } from "../types/Types";
 import { Button } from "@mui/material";
 import { calculateBasket, removeProductFromBasket, setBasket } from "../redux/basketSlice";
@@ -31,22 +31,22 @@ function BasketDetails() {
 
   const buy = () => {
     if (currentUser?.balance && currentUser.balance < totalAmount) {
-      toast.warn('Sorry, Your balance is not enough')
-      return;
+        toast.warn("Bakiyeniz yeterli değildir")
+        return;
     }
     if (currentUser?.balance) {
-      const remainingTotal = currentUser.balance - totalAmount;
+        const remaningTotal = currentUser.balance - totalAmount;
 
-      const payload: UserType = {
-        ...currentUser,
-        balance:remainingTotal
-      }
-      dispatch(updateBalance(payload))
-      dispatch(setBasket([]));
-      localStorage.removeItem("basket");
-      toast.success("Products were purchased. Thanks")
-    }   
-  }
+        const payload: UserType = {
+            ...currentUser,
+            balance: remaningTotal
+        }
+        dispatch(updateBalance(payload));
+        dispatch(setBasket([]));
+        localStorage.removeItem("basket");
+        toast.success("Ürünler satın alınmıştır");
+    }
+}
 
   return (
     <Drawer
@@ -99,7 +99,8 @@ function BasketDetails() {
               </div>
             </div>
           </>
-        ))}
+        ))
+      }
       <div  style={{
                 display: "flex",
                 flexDirection: "column",
@@ -109,7 +110,9 @@ function BasketDetails() {
               }}>
         <div style={{ fontSize: '18px', fontFamily: 'arial' }}>Total Price : {totalAmount}€</div>
         
-        <div><Button onClick={buy} sx={{textTransform:'none', height:'25px', marginTop:'20px'}} size="small" variant="contained" color="success">Buy</Button></div>
+        <div>
+          <Button onClick={buy} sx={{ textTransform: 'none', height: '25px', marginTop: '20px' }} size="small" variant="contained" color="success">Buy</Button>
+        </div>
 
       </div>
     </Drawer>
@@ -117,7 +120,7 @@ function BasketDetails() {
 }
 
 export default BasketDetails;
-function updateBalance(payload: UserType): any {
-  throw new Error("Function not implemented.");
-}
+
+
+
 

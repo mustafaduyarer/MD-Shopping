@@ -46,7 +46,7 @@ const basketSlice = createSlice({
             let totalAmount: number = 0;
             state.basket && state.basket.map((product: ProductType) => {
                 if (product.count) {
-                    totalAmount += product.price * product.count;
+                    totalAmount += Number(product.price) * Number(product.count);
                 }
             })
             state.totalAmount = totalAmount;
@@ -63,3 +63,4 @@ const basketSlice = createSlice({
 export const {setBasket, addProductToBasket, calculateBasket, removeProductFromBasket} = basketSlice.actions
 
 export default basketSlice.reducer
+

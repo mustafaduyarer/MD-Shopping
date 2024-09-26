@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
-import MDLogo from "../images/LOGO1.png";
+import MDLogo from "../images/logoMD.png";
 import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -67,7 +67,7 @@ export default function Navbar() {
           onClick={() => navigate("/")}
           variant="h6"
           component="div"
-          sx={{ flexGrow: 1, cursor: "pointer" }}
+          sx={{ flexGrow: 1, cursor: "pointer", color:'Orange', fontSize:'30px' }}
         >
           MD-Shopping
         </Typography>

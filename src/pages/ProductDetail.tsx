@@ -38,6 +38,7 @@ function PoductDetail() {
         count:count
       }
       dispatch(addProductToBasket(payload))
+      toast.success('Products has been successfully added')
     }
   }
 

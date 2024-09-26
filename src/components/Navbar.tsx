@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import { useDispatch, useSelector } from "react-redux";
-import { filterProducts, setCurrentUser, setProducts } from "../redux/appSlice";
+import { filterProducts, setCurrentUser, setDrawer, setProducts } from "../redux/appSlice";
 import { toast } from "react-toastify";
 import productService from "../services/ProductService";
 import { ProductType } from "../types/Types";
@@ -45,6 +45,10 @@ export default function Navbar() {
       toast.error("An error occured : " + error);
     }
   };
+
+  const openDrawer = () => {
+    dispatch(setDrawer(true))
+  }
 
   return (
     <AppBar position="static" sx={{ backgroundColor: "#2BBD7E" }}>
@@ -97,7 +101,7 @@ export default function Navbar() {
             variant="standard"
           />
 
-          <Badge badgeContent={basket.length} color="warning" sx={{margin:'0px 15px'}}>
+          <Badge onClick={openDrawer} badgeContent={basket.length} color="warning" sx={{margin:'0px 15px', cursor:'pointer'}}>
           <FaBasketShopping style={{ fontSize: "18px",  cursor: "pointer" }} />
           </Badge>
 

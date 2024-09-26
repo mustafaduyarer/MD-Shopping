@@ -11,6 +11,7 @@ import { ProductType, UserType } from './types/Types';
 import productService from './services/ProductService';
 import { setCurrentUser, setProducts } from './redux/appSlice';
 import { setBasket } from './redux/basketSlice';
+import BasketDetails from './components/BasketDetails';
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -50,6 +51,7 @@ function App() {
       <RouterConfig />
       <ToastContainer autoClose={2500} style={{ fontSize: '13px' }} />
       <Spinner />
+      <BasketDetails />
    </div>
   )
 }

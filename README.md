@@ -1,50 +1,85 @@
+<img src="C:\Users\musta\MD=Shopping\src\images\logoMD.png" alt="MD-Shopping">
+
+
 # React + TypeScript + Vite
+#  E-Commerce Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+This project is a full-stack e-commerce application designed to provide a seamless online shopping experience. 
+It includes features such as user authentication, product browsing, cart management, and a checkout process.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+## Features
+- ##### User Authentication: Sign up, log in, and manage user accounts.
+- ##### Product Browsing: View products by categories, search for specific items.
+- ##### Purchas Management: Add, remove, and update items in the shopping cart.
+- ##### Order History: View past orders and track current orders.
+- ##### Responsive Design: Optimized for both desktop and mobile devices.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Configure the top-level `parserOptions` property like this:
+
+
+
+
+
+## Technologies Used
+- ##### Frontend:  React, Vite, CSS, Material-UI
+- ##### Backend: Node.js
+- ##### Database: jsonserver/db.json
+- ##### Payment Gateway: With balance
+
+## Installation
+- #### 1-Clone the repository:
+```js
+git clone https://github.com/mustafaduyarer/MD-Shopping.git 
+
+```
+- #### 2-Install dependencies:
 
 ```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+npm install
+
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- #### 3-Set up environment variables:
 
 ```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+open terminal 
+JSON_SERVER = json-server --watch .\src\jsonserver\db.json  --port 5000
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
 ```
+
+- #### 4-Run the application:
+
+```js
+npm run dev
+```
+
+## Usage
+- #### Sign Up/Login: 
+  Create an account or log in with existing credentials.
+  `for register` http://localhost:5173/register
+  `for Login` http://localhost:5173/login
+  `username=` serpil
+  `password=` s123
+
+- #### Browse Products: 
+  Explore various categories and search for products.
+
+- #### Manage Cart: 
+  Add items to the cart, update quantities, or remove items.
+
+- #### Checkout:
+  Proceed to checkout and complete the purchase.
+
+  ## License
+  This project is licensed under the MIT License.
+
+  ## Contact
+For any questions or feedback, please reach out to mustafaduyarer@gmail.com
+
+
+
+
+

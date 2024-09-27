@@ -31,7 +31,7 @@ function BasketDetails() {
 
   const buy = () => {
     if (currentUser?.balance && currentUser.balance < totalAmount) {
-        toast.warn("Bakiyeniz yeterli değildir")
+        toast.warn("Your balance is not enough.")
         return;
     }
     if (currentUser?.balance) {
@@ -44,7 +44,7 @@ function BasketDetails() {
         dispatch(updateBalance(payload));
         dispatch(setBasket([]));
         localStorage.removeItem("basket");
-        toast.success("Ürünler satın alınmıştır");
+        toast.success("Products were purchased. Thanks");
     }
 }
 

@@ -10,6 +10,39 @@ This project is a full-stack e-commerce application designed to provide a seamle
 It includes features such as user authentication, product browsing, cart management, and a checkout process.
 
 
+## User stories
+- As a user, I should be able to access the MD-Shopping page
+
+- As a user, I should be able to register on the MD-SHOPPING web page
+
+- As a user, I should be able to log in the MD-SHOPPING web page
+
+- As a user, I should be able to access the MD-Shopping Home Page page and see the products.
+
+- As a user, I should be able to make a product search on MD-SHOPPING web page
+
+- As a user, I should be able to filter on the MD-SHOPPING web page.
+
+- As a user, I should be able to select products on MD-SHOPPING web page
+
+- As a user, I should be able to see the details of the product I selected on the MD-SHOPPING web page.
+
+- As a user, I should be able to determine the number of products I selected on the MD-SHOPPING web page.
+
+- As a user I should be able to add the product I chose  to the basket
+
+- As a user I should be able to see the products I have chosen  by clicking the basket icon.
+
+- As a user I should be able to see the products quantity, products prices and total amount I have chosen  by clicking the basket icon.
+
+- As a user, I should be able to delete some products from the basket
+
+- As a user I should be able to buy the products I have chosen 
+
+- As a user, if I don't have enough balance in my account, I shouldn't buy products.(every customer has 1000 euro balance)
+
+- As a user, I should be able to Log out of the system by pressing the logout button.
+
 ## Features
 - ##### User Authentication: Sign up, log in, and manage user accounts.
 - ##### Product Browsing: View products by categories, search for specific items.

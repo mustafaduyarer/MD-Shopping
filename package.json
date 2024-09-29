@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "npm install && vite build",
+    "build": "npm ci && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },

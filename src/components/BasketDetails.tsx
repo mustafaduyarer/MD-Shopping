@@ -120,8 +120,7 @@ function BasketDetails() {
 }
 
 export default BasketDetails;
-//yorum
-//yeni yorum
+
 
 
 

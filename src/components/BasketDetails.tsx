@@ -121,6 +121,7 @@ function BasketDetails() {
 
 export default BasketDetails;
 //yeni bir yorum
+//yeni eklendi
 
 
 

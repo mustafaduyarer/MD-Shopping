@@ -71,4 +71,5 @@ function Category() {
 }
 
 export default Category;
-//yorum git checkout .
+//yorum
+//yeni yorum

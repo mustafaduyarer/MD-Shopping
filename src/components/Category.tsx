@@ -71,5 +71,3 @@ function Category() {
 }
 
 export default Category;
-//yorum
-//yeni yorum

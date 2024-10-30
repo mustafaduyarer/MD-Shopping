@@ -120,10 +120,6 @@ function BasketDetails() {
 }
 
 export default BasketDetails;//yeni
-
-//yeni eklendi
-//yeni yorum
-//yeni yorum
-//yeni yorum
+//yorum
 
 

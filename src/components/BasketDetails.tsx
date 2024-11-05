@@ -118,9 +118,8 @@ function BasketDetails() {
     </Drawer>
   );
 }
+//yorum
+export default BasketDetails;
 
-export default BasketDetails;//yeni
-//yorum
-//yorum
 
 

@@ -117,11 +117,9 @@ function BasketDetails() {
       </div>
     </Drawer>
   );
-}
+}//yorum
 
 export default BasketDetails;
-//yorum
-//yorum
-//yorum eklendi
+
 
 
